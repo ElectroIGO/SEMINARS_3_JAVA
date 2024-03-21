@@ -6,7 +6,7 @@ public class Post {
     private String title;
     private String msg;
     private LocalDateTime dateTime = LocalDateTime.now();
-    private int countOfLikes;
+    private int countOfLikes = 0;
 
     public String getTitle(){
         return title;

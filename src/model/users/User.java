@@ -1,5 +1,7 @@
 package model.users;
 
+import java.security.MessageDigest;
+
 import service.IPostService;
 
 public abstract class User extends GuestUser implements IPostService {
@@ -23,8 +25,19 @@ public abstract class User extends GuestUser implements IPostService {
     public String getPassword(){
         return password;
     }
-    public void setPassword(String password){
-        this.password = password;
+    public void setPassword(String inputPassword) {
+        if(inputPassword != null && inputPassword.matches("[A-ZĒŪĪĻĶĢŠĀČŅ]{1}[a-zēūīļķģšāžčņ]")){
+            try{
+                MessageDigest md = MessageDigest.getInstance("MD5");
+                md.update(inputPassword.getBytes());
+                this.password = new String(md.digest());
+            } catch (Exception e){
+                this.password = "admin123";
+            }
+        } else {
+            this.password = "admin123";
+        }
+
     }
     //3. constructors
     public User() {
