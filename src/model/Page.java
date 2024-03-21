@@ -34,10 +34,10 @@ public class Page {
         return followers;
     }
     public ArrayList<Post> getPrivatePage() {
-        return privatePage;
+        return privatePost;
     }
     public ArrayList<Post> getPublicPage() {
-        return publicPage;
+        return publicPost;
     }
     //3. constructors
     public Page(){

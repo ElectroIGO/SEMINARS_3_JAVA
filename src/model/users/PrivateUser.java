@@ -37,7 +37,7 @@ public class PrivateUser extends User {
     }
     //5 other functions
     @Override
-    public void publishPost(String title, String msg, PostType type) throws Exception {
+    public Post publishPost(String title, String msg, PostType type) throws Exception {
         if(title == null || msg == null || type == null)
             throw new Exception("Problems with input params");
         Post newPost = new Post(title, msg);
@@ -45,6 +45,7 @@ public class PrivateUser extends User {
             privatePost.add(newPost);
         else
             publicPost.add(newPost);
+        return newPost; 
         // TODO Auto-generated method stub
         //throw new UnsupportedOperationException("Unimplemented method 'publishPost'");
     }
